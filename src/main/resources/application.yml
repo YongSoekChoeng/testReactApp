@@ -1,0 +1,25 @@
+# testReact 서버 설정. DB 접속 정보는 db/00-init.sql 이 만든 계정이다(시험용).
+server:
+  port: ${APP_PORT:7105}
+  servlet:
+    session:
+      timeout: 60m
+
+spring:
+  application:
+    name: testReact
+  datasource:
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/testReact?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: treactapp
+    password: Treactapp1234!
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  file:
+    name: logs/testReact.log
+  level:
+    com.testreact: DEBUG
